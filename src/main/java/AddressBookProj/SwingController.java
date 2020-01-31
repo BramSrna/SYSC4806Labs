@@ -109,7 +109,12 @@ public class SwingController {
 
         model.addBuddy(newBuddy);
 
-        buddyRepo.save(newBuddy);
+        if (model.getId() == -1) {
+            newId = Math.toIntExact(counter.incrementAndGet());
+            model.setId(newId);
+        }
+
+        bookRepo.save(model);
     }
 
     /**

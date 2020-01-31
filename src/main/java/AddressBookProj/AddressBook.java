@@ -18,6 +18,7 @@ public class AddressBook {
     public AddressBook()
     {
         clearBuddies();
+        this.id = -1;
     }
 
     @Id
