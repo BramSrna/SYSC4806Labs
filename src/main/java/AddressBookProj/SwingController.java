@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 public class SwingController {
@@ -21,6 +22,8 @@ public class SwingController {
 
     @Autowired
     private AddressBook model;
+
+    private final AtomicLong counter = new AtomicLong();
 
     @Autowired
     public SwingController(SwingDisplay view, AddressBook model) {
@@ -100,6 +103,10 @@ public class SwingController {
 
         String addr = view.getAddress();
         BuddyInfo newBuddy = new BuddyInfo(name, phoneNum, addr);
+
+        int newId = Math.toIntExact(counter.incrementAndGet());
+        newBuddy.setId(newId);
+
         model.addBuddy(newBuddy);
 
         buddyRepo.save(newBuddy);
