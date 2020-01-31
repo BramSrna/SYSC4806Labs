@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 @Entity
@@ -16,21 +17,25 @@ public class BuddyInfo {
     private int phoneNumber;
     private String address;
 
+    private static final AtomicLong buddyCounter = new AtomicLong();
+
     @Autowired
     public BuddyInfo() {
         setName("");
         setPhoneNumber(-1);
         setAddress("");
+        setId(Math.toIntExact(buddyCounter.incrementAndGet()));
     }
 
     public BuddyInfo(String name, int phoneNumber, String address) {
         setName(name);
         setPhoneNumber(phoneNumber);
         setAddress(address);
+        setId(Math.toIntExact(buddyCounter.incrementAndGet()));
     }
 
     @Id
-    @GeneratedValue
+    //@GeneratedValue
     public Integer getId() {
         return this.id;
     }

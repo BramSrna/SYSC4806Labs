@@ -6,27 +6,31 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.util.ArrayList; // import the ArrayList class
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 @Entity
 public class AddressBook {
-    private Integer id;
+    private int id;
 
     private List<BuddyInfo> myBuddies;
+
+    private static final AtomicLong counter = new AtomicLong();
 
     @Autowired
     public AddressBook()
     {
         clearBuddies();
+        this.id = Math.toIntExact(counter.incrementAndGet());
     }
 
     @Id
-    @GeneratedValue
-    public Integer getId() {
+    //@GeneratedValue
+    public int getId() {
         return this.id;
     }
 
-    public void setId(Integer newId) {
+    public void setId(int newId) {
         this.id = newId;
     }
 
@@ -34,7 +38,7 @@ public class AddressBook {
         myBuddies.add(newBuddy);
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     public List<BuddyInfo> getMyBuddies(){
         return(myBuddies);
     }
@@ -42,7 +46,6 @@ public class AddressBook {
     public void setMyBuddies(List<BuddyInfo> newBuddyList) {
         this.myBuddies = newBuddyList;
     }
-
 
     public void clearBuddies(){
         myBuddies = new ArrayList<BuddyInfo>();
@@ -64,6 +67,17 @@ public class AddressBook {
         if (ind < myBuddies.size()) {
             myBuddies.remove(ind);
         }
+    }
+
+    public void removeBuddyWithId(int id) {
+        int ind = 0;
+        while (ind < myBuddies.size()){
+            if (myBuddies.get(ind).getId().equals(id)) {
+                break;
+            }
+            ind += 1;
+        }
+        this.removeBuddy(ind);
     }
 
     @Override
