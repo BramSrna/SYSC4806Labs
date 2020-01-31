@@ -15,7 +15,7 @@ public class AddressBookController {
     private final AtomicLong counter = new AtomicLong();
 
     @GetMapping("/addAddressBook")
-    public AddressBook addressBook() {
+    public AddressBook addAddressBook() {
         AddressBook newBook = new AddressBook();
         newBook.setId(Math.toIntExact(counter.incrementAndGet()));
 
@@ -23,4 +23,5 @@ public class AddressBookController {
 
         return newBook;
     }
+
 }

@@ -29,9 +29,12 @@ public class BuddyInfoController {
         Optional<AddressBook> checkBook = bookRepo.findById(bookId);
         if (checkBook.isPresent()){
             AddressBook book = checkBook.get();
+            System.out.println(book.toString());
 
             newBuddy = new BuddyInfo(name, phoneNumber, address);
-            newBuddy.setId(Math.toIntExact(counter.incrementAndGet()));
+            int newId = Math.toIntExact(counter.incrementAndGet());
+            System.out.println(newId);
+            newBuddy.setId(newId);
 
             book.addBuddy(newBuddy);
 

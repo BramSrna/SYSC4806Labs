@@ -30,7 +30,7 @@ public class BuddyInfo {
     }
 
     @Id
-    @GeneratedValue
+    //@GeneratedValue
     public Integer getId() {
         return this.id;
     }
