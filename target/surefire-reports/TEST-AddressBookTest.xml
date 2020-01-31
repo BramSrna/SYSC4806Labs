@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="AddressBookTest" time="0.013" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="AddressBookTest" time="173.934" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2018.2.1"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="12.0.2+10"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-12.0.2\bin"/>
-    <property name="maven.multiModuleProjectDirectory" value="M:\SYSC4806\Lab 1"/>
+    <property name="maven.multiModuleProjectDirectory" value="M:\SYSC4806 Software Engineering Lab\Abraham Srna Lab 1"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="path.separator" value=";"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="idea.launcher.port" value="53632"/>
+    <property name="idea.launcher.port" value="59801"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="user.script" value=""/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="M:\SYSC4806\Lab 1"/>
+    <property name="user.dir" value="M:\SYSC4806 Software Engineering Lab\Abraham Srna Lab 1"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="java.runtime.version" value="12.0.2+10"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
@@ -62,7 +62,8 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="AddressBookTest" name="testRemoveBuddy" time="0.013"/>
+  <testcase classname="AddressBookTest" name="testPersistence" time="173.933"/>
+  <testcase classname="AddressBookTest" name="testRemoveBuddy" time="0.001"/>
   <testcase classname="AddressBookTest" name="testAddBuddy" time="0"/>
   <testcase classname="AddressBookTest" name="testClearBuddies" time="0"/>
 </testsuite>

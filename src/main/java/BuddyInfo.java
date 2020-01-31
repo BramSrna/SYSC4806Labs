@@ -1,13 +1,35 @@
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class BuddyInfo {
+    private Integer id = null;
+
     private String name;
     private int phoneNumber;
     private String address;
 
+    public BuddyInfo() {
+        setName("");
+        setPhoneNumber(-1);
+        setAddress("");
+    }
 
     public BuddyInfo(String name, int phoneNumber, String address) {
         setName(name);
         setPhoneNumber(phoneNumber);
         setAddress(address);
+    }
+
+    @Id
+    @GeneratedValue
+    public Integer getId() {
+        return this.id;
+    }
+
+    public void setId(Integer newId) {
+        this.id = newId;
     }
 
     public void setName(String newName){
@@ -18,11 +40,13 @@ public class BuddyInfo {
         return(this.name);
     }
 
-    public void setPhoneNumber(int newNum){
+    public void setPhoneNumber(int newNum)
+    {
         this.phoneNumber = newNum;
     }
 
     public int getPhoneNumber(){
+
         return(this.phoneNumber);
     }
 
@@ -31,15 +55,17 @@ public class BuddyInfo {
     }
 
     public String getAddress() {
+
         return(this.address);
     }
 
     @Override
     public String toString() {
-        String toRet = String.format("Buddy: Name: %s, Phone Number: %d, Address: %s",
-                                     this.name,
-                                     this.phoneNumber,
-                                     this.address);
+        String toRet = String.format("Buddy: Name: %s, Id: %d, Phone Number: %d, Address: %s",
+                                     this.getName(),
+                                     this.getId(),
+                                     this.getPhoneNumber(),
+                                     this.getAddress());
 
         return(toRet);
     }

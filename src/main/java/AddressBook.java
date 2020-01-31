@@ -1,20 +1,41 @@
+import javax.persistence.*;
 import java.util.ArrayList; // import the ArrayList class
+import java.util.List;
 
-
+@Entity
 public class AddressBook {
-    private ArrayList<BuddyInfo> myBuddies;
+    private Integer id;
 
-    public AddressBook() {
+    private List<BuddyInfo> myBuddies;
+
+    public AddressBook()
+    {
         clearBuddies();
+    }
+
+    @Id
+    @GeneratedValue
+    public Integer getId() {
+        return this.id;
+    }
+
+    public void setId(Integer newId) {
+        this.id = newId;
     }
 
     public void addBuddy(BuddyInfo newBuddy) {
         myBuddies.add(newBuddy);
     }
 
-    public ArrayList<BuddyInfo> getBuddies(){
+    @OneToMany(cascade = CascadeType.PERSIST)
+    public List<BuddyInfo> getMyBuddies(){
         return(myBuddies);
     }
+
+    public void setMyBuddies(List<BuddyInfo> newBuddyList) {
+        this.myBuddies = newBuddyList;
+    }
+
 
     public void clearBuddies(){
         myBuddies = new ArrayList<BuddyInfo>();
@@ -39,7 +60,7 @@ public class AddressBook {
     @Override
     public String toString() {
         String toRet = "";
-        toRet += "Address Book: \n";
+        toRet += String.format("Address Book (Id: %d): \n", this.getId());
 
         for (BuddyInfo buddy : myBuddies) {
             toRet += "\t" + buddy.toString() + "\n";
