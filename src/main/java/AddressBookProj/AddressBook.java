@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 @Entity
 public class AddressBook {
-    private Integer id;
+    private int id;
 
     private List<BuddyInfo> myBuddies;
 
@@ -22,11 +22,11 @@ public class AddressBook {
 
     @Id
     @GeneratedValue
-    public Integer getId() {
+    public int getId() {
         return this.id;
     }
 
-    public void setId(Integer newId) {
+    public void setId(int newId) {
         this.id = newId;
     }
 
@@ -34,7 +34,7 @@ public class AddressBook {
         myBuddies.add(newBuddy);
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.MERGE)
     public List<BuddyInfo> getMyBuddies(){
         return(myBuddies);
     }
@@ -63,6 +63,17 @@ public class AddressBook {
         if (ind < myBuddies.size()) {
             myBuddies.remove(ind);
         }
+    }
+
+    public void removeBuddyWithId(int id) {
+        int ind = 0;
+        while (ind < myBuddies.size()){
+            if (myBuddies.get(ind).getId().equals(id)) {
+                break;
+            }
+            ind += 1;
+        }
+        this.removeBuddy(ind);
     }
 
     @Override
