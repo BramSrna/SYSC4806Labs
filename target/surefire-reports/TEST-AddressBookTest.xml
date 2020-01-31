@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="AddressBookTest" time="173.934" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="AddressBookTest" time="3.686" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2018.2.1"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -11,7 +11,7 @@
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="path.separator" value=";"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="idea.launcher.port" value="59801"/>
+    <property name="idea.launcher.port" value="57818"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="user.script" value=""/>
     <property name="user.country" value="US"/>
@@ -62,8 +62,8 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="AddressBookTest" name="testPersistence" time="173.933"/>
-  <testcase classname="AddressBookTest" name="testRemoveBuddy" time="0.001"/>
+  <testcase classname="AddressBookTest" name="testPersistence" time="3.686"/>
+  <testcase classname="AddressBookTest" name="testRemoveBuddy" time="0"/>
   <testcase classname="AddressBookTest" name="testAddBuddy" time="0"/>
   <testcase classname="AddressBookTest" name="testClearBuddies" time="0"/>
 </testsuite>
