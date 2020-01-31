@@ -43,7 +43,6 @@ public class AddressBook {
         this.myBuddies = newBuddyList;
     }
 
-
     public void clearBuddies(){
         myBuddies = new ArrayList<BuddyInfo>();
     }
