@@ -17,7 +17,7 @@ public class BuddyInfoController {
     @Autowired
     private BuddyInfoRepository buddyRepo;
 
-    private final AtomicLong counter = new AtomicLong();
+    private final AtomicLong controllerCounter = new AtomicLong();
 
     @GetMapping("/addBuddy")
     public BuddyInfo addBuddy(@RequestParam(value = "name") String name,
@@ -32,9 +32,9 @@ public class BuddyInfoController {
             System.out.println(book.toString());
 
             newBuddy = new BuddyInfo(name, phoneNumber, address);
-            int newId = Math.toIntExact(counter.incrementAndGet());
+            int newId = Math.toIntExact(controllerCounter.incrementAndGet());
             System.out.println(newId);
-            newBuddy.setId(newId);
+            //newBuddy.setId(newId);
 
             book.addBuddy(newBuddy);
 

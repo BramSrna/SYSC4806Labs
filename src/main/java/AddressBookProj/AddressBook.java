@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.util.ArrayList; // import the ArrayList class
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 @Entity
@@ -14,15 +15,17 @@ public class AddressBook {
 
     private List<BuddyInfo> myBuddies;
 
+    private static final AtomicLong counter = new AtomicLong();
+
     @Autowired
     public AddressBook()
     {
         clearBuddies();
-        this.id = -1;
+        this.id = Math.toIntExact(counter.incrementAndGet());
     }
 
     @Id
-    @GeneratedValue
+    //@GeneratedValue
     public int getId() {
         return this.id;
     }
@@ -35,7 +38,7 @@ public class AddressBook {
         myBuddies.add(newBuddy);
     }
 
-    @OneToMany(cascade = CascadeType.MERGE)
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     public List<BuddyInfo> getMyBuddies(){
         return(myBuddies);
     }

@@ -17,7 +17,7 @@ public class AddressBookController {
     @GetMapping("/addAddressBook")
     public AddressBook addAddressBook() {
         AddressBook newBook = new AddressBook();
-        newBook.setId(Math.toIntExact(counter.incrementAndGet()));
+        //newBook.setId(Math.toIntExact(counter.incrementAndGet()));
 
         bookRepo.save(newBook);
 

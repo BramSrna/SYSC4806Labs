@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Component
@@ -104,17 +105,17 @@ public class SwingController {
         String addr = view.getAddress();
         BuddyInfo newBuddy = new BuddyInfo(name, phoneNum, addr);
 
-        int newId = Math.toIntExact(counter.incrementAndGet());
-        newBuddy.setId(newId);
-
         model.addBuddy(newBuddy);
 
-        if (model.getId() == -1) {
-            newId = Math.toIntExact(counter.incrementAndGet());
-            model.setId(newId);
+        System.out.println(model.getId());
+        Optional<AddressBook> dbCopy = bookRepo.findById(model.getId());
+        if (dbCopy.isPresent()) {
+            AddressBook tempBook = dbCopy.get();
+            tempBook.addBuddy(newBuddy);
+            bookRepo.save(tempBook);
+        } else {
+            bookRepo.save(model);
         }
-
-        bookRepo.save(model);
     }
 
     /**
