@@ -2,6 +2,7 @@ package AddressBookProj;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +15,7 @@ public class AddressBookController {
 
     private final AtomicLong counter = new AtomicLong();
 
-    @GetMapping("/addAddressBook")
+    @PostMapping("/addAddressBook")
     public AddressBook addAddressBook() {
         AddressBook newBook = new AddressBook();
         //newBook.setId(Math.toIntExact(counter.incrementAndGet()));

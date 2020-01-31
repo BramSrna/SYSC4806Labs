@@ -2,6 +2,7 @@ package AddressBookProj;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,7 @@ public class BuddyInfoController {
 
     private final AtomicLong controllerCounter = new AtomicLong();
 
-    @GetMapping("/addBuddy")
+    @PostMapping("/addBuddy")
     public BuddyInfo addBuddy(@RequestParam(value = "name") String name,
                               @RequestParam(value = "phoneNumber") int phoneNumber,
                               @RequestParam(value = "address") String address,
@@ -50,7 +51,7 @@ public class BuddyInfoController {
         return newBuddy;
     }
 
-    @GetMapping("/removeBuddy")
+    @PostMapping("/removeBuddy")
     public Boolean removeBuddy(@RequestParam(value = "buddyId") int buddyId,
                                  @RequestParam(value = "bookId") int bookId) {
         Boolean retVal = false;
