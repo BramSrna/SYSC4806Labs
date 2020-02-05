@@ -28,7 +28,7 @@ public class SwingDisplay {
 
     @Autowired
     public SwingDisplay(){
-        render();
+        //render();
     }
 
     public void setController(SwingController newController) {
