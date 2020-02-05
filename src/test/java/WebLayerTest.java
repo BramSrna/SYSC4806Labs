@@ -29,7 +29,7 @@ public class WebLayerTest {
     @Test
     public void shouldReturnDefaultMessage() throws Exception {
         this.mockMvc.perform(post("/addAddressBook")).andDo(print());
-        this.mockMvc.perform(get("/viewAddressBook?id=2")).andDo(print()).andExpect(status().isOk())
+        this.mockMvc.perform(get("/viewAddressBook?id=-1")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Address Book")));
     }
 }

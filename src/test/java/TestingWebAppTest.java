@@ -25,7 +25,7 @@ public class TestingWebAppTest {
     public void shouldReturnDefaultMessage() throws Exception {
         //this.mockMvc.perform(MockMvcRequestBuilders.post("/addressBook")).andDo(MockMvcResultHandlers.print());
         this.mockMvc.perform(post("/addAddressBook"));
-        this.mockMvc.perform(get("/viewAddressBook?id=2")).andDo(print()).andExpect(status().isOk())
+        this.mockMvc.perform(get("/viewAddressBook?id=-1")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Address Book")));
     }
 }

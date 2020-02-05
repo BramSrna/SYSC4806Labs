@@ -18,6 +18,12 @@ public class ThymeController {
     @GetMapping("viewAddressBook")
     public String viewAddressBook(@RequestParam(value = "id") int bookId,
                                   Model model) {
+        if (bookId == -1) {
+            for (AddressBook book : bookRepo.findAll()) {
+                bookId = book.getId();
+            }
+        }
+
         Optional<AddressBook> checkBook = bookRepo.findById(bookId);
         if (checkBook.isPresent()){
             model.addAttribute("book", checkBook.get());
