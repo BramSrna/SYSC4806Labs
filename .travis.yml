@@ -6,3 +6,7 @@ deploy:
  api-key: 
   secure: $HEROKU_API_KEY
  app: addressbook111
+ on:
+  branches:
+   - master
+   - Lab5
