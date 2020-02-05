@@ -56,6 +56,7 @@ public class AddressBookTest {
         assertEquals(testBook.getMyBuddies().size(), 0);
     }
 
+    /**
     @Test
     public void testPersistence() {
         BuddyInfo buddy1 = new BuddyInfo("Dan", 1, "Main Street");
@@ -92,5 +93,6 @@ public class AddressBookTest {
 
         emf.close();
     }
+    **/
 
 }

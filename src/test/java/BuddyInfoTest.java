@@ -56,6 +56,7 @@ public class BuddyInfoTest {
         assertEquals(testBuddy.getAddress(), testAddr);
     }
 
+    /**
     @Test
     public void testPersistence() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence-test");
@@ -84,5 +85,6 @@ public class BuddyInfoTest {
 
         emf.close();
     }
+    **/
 
 }
