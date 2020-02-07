@@ -55,36 +55,4 @@ public class BuddyInfoTest {
         testBuddy.setAddress(testAddr);
         assertEquals(testBuddy.getAddress(), testAddr);
     }
-
-    /**
-    @Test
-    public void testPersistence() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence-test");
-
-        EntityManager em = emf.createEntityManager();
-
-        EntityTransaction tx = em.getTransaction();
-
-        tx.begin();
-
-        em.persist(testBuddy);
-
-        tx.commit();
-
-        Query q = em.createQuery("SELECT buddy FROM BuddyInfo buddy");
-
-        List<BuddyInfo> results = q.getResultList();
-
-        System.out.println("List of Buddy Infos\n-------------");
-
-        for (BuddyInfo buddy : results) {
-            System.out.println(buddy.toString());
-        }
-
-        em.close();
-
-        emf.close();
-    }
-    **/
-
 }

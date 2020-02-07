@@ -55,44 +55,4 @@ public class AddressBookTest {
 
         assertEquals(testBook.getMyBuddies().size(), 0);
     }
-
-    /**
-    @Test
-    public void testPersistence() {
-        BuddyInfo buddy1 = new BuddyInfo("Dan", 1, "Main Street");
-        BuddyInfo buddy2 = new BuddyInfo("Paul", 2, "Main Street");
-        BuddyInfo buddy3 = new BuddyInfo("George", 3, "Main Street");
-
-        testBook.addBuddy(buddy1);
-        testBook.addBuddy(buddy2);
-        testBook.addBuddy(buddy3);
-
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence-test");
-
-        EntityManager em = emf.createEntityManager();
-
-        EntityTransaction tx = em.getTransaction();
-
-        tx.begin();
-
-        em.persist(testBook);
-
-        tx.commit();
-
-        Query q = em.createQuery("SELECT book FROM AddressBook book");
-
-        List<AddressBook> results = q.getResultList();
-
-        System.out.println("List of Address Books\n-------------");
-
-        for (AddressBook book : results) {
-            System.out.println(book.toString());
-        }
-
-        em.close();
-
-        emf.close();
-    }
-    **/
-
 }

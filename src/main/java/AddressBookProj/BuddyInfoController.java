@@ -27,6 +27,12 @@ public class BuddyInfoController {
                               @RequestParam(value = "bookId") int bookId) {
         BuddyInfo newBuddy = null;
 
+        if (bookId == -1) {
+            for (AddressBook book : bookRepo.findAll()) {
+                bookId = book.getId();
+            }
+        }
+
         Optional<AddressBook> checkBook = bookRepo.findById(bookId);
         if (checkBook.isPresent()){
             AddressBook book = checkBook.get();
@@ -57,6 +63,18 @@ public class BuddyInfoController {
         Boolean retVal = false;
 
         BuddyInfo newBuddy = null;
+
+        if (bookId == -1) {
+            for (AddressBook book : bookRepo.findAll()) {
+                bookId = book.getId();
+            }
+        }
+
+        if (buddyId == -1) {
+            for (BuddyInfo buddy : buddyRepo.findAll()) {
+                buddyId = buddy.getId();
+            }
+        }
 
         Optional<AddressBook> checkBook = bookRepo.findById(bookId);
         if (checkBook.isPresent()){
