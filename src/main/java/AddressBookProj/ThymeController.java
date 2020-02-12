@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.ui.Model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -14,6 +16,17 @@ import java.util.concurrent.atomic.AtomicLong;
 public class ThymeController {
     @Autowired
     private AddressBookRepository bookRepo;
+
+    private List<Integer> getIds() {
+        List<Integer> ids = new ArrayList<Integer>();
+        for (AddressBook book : bookRepo.findAll()) {
+            Integer id = book.getId();
+            ids.add(id);
+        }
+
+        return ids;
+
+    }
 
     @GetMapping("viewAddressBook")
     public String viewAddressBook(@RequestParam(value = "id") int bookId,
@@ -24,14 +37,32 @@ public class ThymeController {
             }
         }
 
+        AddressBook toView = null;
+
         Optional<AddressBook> checkBook = bookRepo.findById(bookId);
         if (checkBook.isPresent()){
-            model.addAttribute("book", checkBook.get());
+            toView = checkBook.get();
         } else {
             System.out.println(String.format("No AddressBook with id: %d", bookId));
         }
 
-        return "AddressBook";
+        model.addAttribute("book", toView);
+        model.addAttribute("buddyInfo", new BuddyInfo());
+        model.addAttribute("bookIds", getIds());
+        model.addAttribute("addressBook", new AddressBook());
+
+        return "index";
     }
+
+    @GetMapping("/")
+    public String viewHomePage(Model model) {
+        model.addAttribute("bookToView", null);
+        model.addAttribute("buddyInfo", new BuddyInfo());
+        model.addAttribute("bookIds", getIds());
+        model.addAttribute("addressBook", new AddressBook());
+
+        return "index";
+    }
+
 
 }
