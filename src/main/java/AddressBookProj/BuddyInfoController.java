@@ -58,7 +58,7 @@ public class BuddyInfoController {
     }
 
     @PostMapping("/removeBuddy")
-    public Boolean removeBuddy(@RequestParam(value = "buddyId") int buddyId,
+    public int removeBuddy(@RequestParam(value = "buddyId") int buddyId,
                                  @RequestParam(value = "bookId") int bookId) {
         Boolean retVal = false;
 
@@ -94,6 +94,6 @@ public class BuddyInfoController {
             }
         }
 
-        return retVal;
+        return buddyId;
     }
 }

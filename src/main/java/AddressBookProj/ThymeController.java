@@ -1,9 +1,11 @@
 package AddressBookProj;
 
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.ui.Model;
 
@@ -26,6 +28,27 @@ public class ThymeController {
 
         return ids;
 
+    }
+
+    @GetMapping("viewAddressBookJson")
+    public @ResponseBody AddressBook viewAddressBookJson(@RequestParam(value = "id") int bookId,
+                               Model model) {
+        if (bookId == -1) {
+            for (AddressBook book : bookRepo.findAll()) {
+                bookId = book.getId();
+            }
+        }
+
+        AddressBook toView = null;
+
+        Optional<AddressBook> checkBook = bookRepo.findById(bookId);
+        if (checkBook.isPresent()){
+            toView = checkBook.get();
+        } else {
+            System.out.println(String.format("No AddressBook with id: %d", bookId));
+        }
+
+        return toView;
     }
 
     @GetMapping("viewAddressBook")
