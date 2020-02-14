@@ -28,6 +28,8 @@ $(document).ready(function() {
 
             $(".needsBookId").val(data.id);
 
+            $("#viewAddressBookDivId").removeAttr("style");
+
             var buddies = data.myBuddies;
             for(var i = 0; i < buddies.length; i++) {
                 var currBuddy = buddies[i];

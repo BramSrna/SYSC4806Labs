@@ -74,7 +74,7 @@ public class ThymeController {
         model.addAttribute("bookIds", getIds());
         model.addAttribute("addressBook", new AddressBook());
 
-        return "index";
+        return "AddressBook";
     }
 
     @GetMapping("/")
